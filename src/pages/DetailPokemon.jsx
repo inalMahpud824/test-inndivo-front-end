@@ -1,23 +1,37 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import Navbar from "../components/Navbar";
 const DetailPage = () => {
+  const [pokemon, setPokemon] = useState();
+  const { id } = useParams();
+
+  useEffect(() => {
+    if (id) {
+      getPokemon();
+    }
+  }, [id]);
+
+  const getPokemon = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5000/pokemon/${id}`);
+      const res = await response.data;
+      setPokemon(res);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <>
-      <nav className="flex w-full bg-slate-500 justify-between h-20">
-        <div className="flex items-center py-0 px-3">
-          <img src="/public/images/pokemon-logo.png" alt="" className="h-28" />
-        </div>
-        <div className="flex items-center">
-          <a href="" className="py-0 px-2 mx-1 text-white text-xl font-medium">
-            List Pokemon
-          </a>
-          <a href="" className="p-3 px-2 mx-1 text-white text-xl font-medium">
-            My Pokemon
-          </a>
-        </div>
-      </nav>
+      <Navbar />
 
       <div className="container mx-auto my-9">
         <div className="flex justify-between items-center">
-          <h2 className="font-bold text-lg p-4">Pokemon Name</h2>
+          {pokemon && (
+            <h2 className="font-bold text-lg p-4">
+              Pokemon Name: {pokemon.name}
+            </h2>
+          )}
           <div className="flex">
             <button className="bg-red-500 text-white px-4 py-2 rounded mx-4 shadow-md">
               Release Pokemon
@@ -44,20 +58,29 @@ const DetailPage = () => {
             </tr>
           </thead>
 
-          <tbody className="bg-white">
-            <tr>
-              <td className="px-6 py-4">height</td>
-              <td className="px-6 py-4 border-b border-gray-200">hp</td>
-            </tr>
+          {pokemon && (
+            <tbody className="bg-white">
+              <tr>
+                <td className="px-6 py-4">Height: {pokemon.height}</td>
+                <td className="px-6 py-4 border-b border-gray-200">
+                  Hp: {pokemon.hp}
+                </td>
+              </tr>
 
-            <tr>
-              <td className="px-6 py-4">width</td>
-              <td className="px-6 py-4 border-b border-gray-200">damage</td>
-            </tr>
-            <tr>
-              <td className="px-6 py-4">length</td>
-            </tr>
-          </tbody>
+              <tr>
+                <td className="px-6 py-4">Width: {pokemon.width}</td>
+                <td className="px-6 py-4 border-b border-gray-200">
+                  Damage: {pokemon.damage}
+                </td>
+              </tr>
+              <tr>
+                <td className="px-6 py-4">Length: {pokemon.length}</td>
+              </tr>
+              <tr>
+                <td className="px-6 py-4">Skill: {pokemon.skill}</td>
+              </tr>
+            </tbody>
+          )}
         </table>
       </div>
     </>
