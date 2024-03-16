@@ -15,10 +15,10 @@ const AddPokemonPage = () => {
     const image = e.target.elements.image.value;
     console.log(name, height, width, length, skill, hp, damage, image)
     try {
-      const response = await axios.post('http://localhost:5000/pokemon', {
+       await axios.post('http://localhost:5000/pokemon', {
         name, skill, height, width, length, hp, damage, image
       })
-      console.log('response nya: ', response)
+      window.location.href="/"
     }catch (error) {
       console.error(error)
     }

@@ -36,21 +36,15 @@ const UpdatePokemonPage = () => {
     const image = e.target.elements.image.value;
     console.log(name, height, width, length, skill, hp, damage, image)
     try {
-      const response = await axios.patch(`http://localhost:5000/pokemon/${id}`, {
+      await axios.patch(`http://localhost:5000/pokemon/${id}`, {
         name, skill, height, width, length, hp, damage, image
       })
-      console.log('response nya: ', response)
+      window.location.href=`/detail-pokemon/${pokemon.id}`
     }catch (error) {
       console.error(error)
     }
   }
 
-  // useEffect(() => {
-  //   if(pokemon) {
-  //     console.log(pokemon.name)
-
-  //   }
-  // }, [pokemon])
 
   return (
     <>
