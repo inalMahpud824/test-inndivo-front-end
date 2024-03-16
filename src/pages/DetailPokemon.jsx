@@ -66,7 +66,6 @@ const DetailPage = () => {
                   Hp: {pokemon.hp}
                 </td>
               </tr>
-
               <tr>
                 <td className="px-6 py-4">Width: {pokemon.width}</td>
                 <td className="px-6 py-4 border-b border-gray-200">
