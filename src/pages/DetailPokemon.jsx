@@ -21,6 +21,10 @@ const DetailPage = () => {
       console.error(error);
     }
   };
+  const deletePokemon = async (id) => {
+    await axios.delete(`http://localhost:5000/pokemon/${id}`)
+    window.location.href="/"
+  }
   return (
     <>
       <Navbar />
@@ -33,12 +37,17 @@ const DetailPage = () => {
             </h2>
           )}
           <div className="flex">
-            <button className="bg-red-500 text-white px-4 py-2 rounded mx-4 shadow-md">
-              Release Pokemon
+            <button className="bg-yellow-300 text-white px-4 py-2 rounded mx-4 shadow-md">
+              Release Pokemno
             </button>
-            <button className="bg-slate-500 text-white px-4 py-2 rounded mx-4 shadow-md">
-              Rename Pokemon
+            <button className="bg-red-500 text-white px-4 py-2 rounded mx-4 shadow-md" onClick={() => deletePokemon(pokemon.id)}>
+              Delete Pokemon
             </button>
+            <a href={`/update/pokemon/${id}`}>
+              <button className="bg-slate-500 text-white px-4 py-2 rounded mx-4 shadow-md">
+                Update Pokemon
+              </button>
+            </a>
           </div>
         </div>
         <img
