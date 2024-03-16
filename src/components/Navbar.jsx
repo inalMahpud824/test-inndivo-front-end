@@ -5,10 +5,10 @@ const Navbar = () => {
         <img src="/public/images/pokemon-logo.png" alt="" className="h-28" />
       </div>
       <div className="flex items-center">
-        <a href="" className="py-0 px-2 mx-1 text-white text-xl font-medium">
+        <a href="/" className="py-0 px-2 mx-1 text-white text-xl font-medium">
           List Pokemon
         </a>
-        <a href="" className="p-3 px-2 mx-1 text-white text-xl font-medium">
+        <a href="/my-pokemon" className="p-3 px-2 mx-1 text-white text-xl font-medium">
           My Pokemon
         </a>
       </div>

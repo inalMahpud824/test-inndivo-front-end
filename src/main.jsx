@@ -5,6 +5,7 @@ import MyPokemonPage from './pages/MyPokemon'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ListPokemonPage from './pages/ListPokemon'
 import DetailPage from './pages/DetailPokemon'
+import AddPokemonPage from './pages/AddPokemon'
 
 
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: '/detail-pokemon/:id',
     element: <DetailPage />
+  },
+  {
+    path: '/add-pokemon',
+    element: <AddPokemonPage />
   },
 
 ])
