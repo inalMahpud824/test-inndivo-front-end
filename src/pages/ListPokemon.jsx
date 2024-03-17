@@ -12,7 +12,7 @@ const ListPokemonPage = () => {
   }, []);
   const getPokemon = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/pokemon");
+      const response = await axios.get("http://localhost:3000/pokemons");
       const res = await response.data;
       setPokemon(res);
     } catch (error) {

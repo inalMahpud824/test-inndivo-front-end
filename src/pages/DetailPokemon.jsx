@@ -11,10 +11,11 @@ const DetailPage = () => {
       getPokemon();
     }
   }, [id]);
+  
 
   const getPokemon = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/pokemon/${id}`);
+      const response = await axios.get(`http://localhost:3000/pokemons/${id}`);
       const res = await response.data;
       setPokemon(res);
     } catch (error) {
@@ -22,8 +23,20 @@ const DetailPage = () => {
     }
   };
   const deletePokemon = async (id) => {
-    await axios.delete(`http://localhost:5000/pokemon/${id}`)
+    await axios.delete(`http://localhost:3000/pokemons/${id}`)
     window.location.href="/"
+  }
+  const catchPokemon = async (id) => {
+    await axios.put(`http://localhost:3000/pokemons/${id}`, {
+      status: '1'
+    })
+    getPokemon()
+  }
+  const releasePokemon = async (id) => {
+    await axios.put(`http://localhost:3000/pokemons/${id}`, {
+      status: '0'
+    })
+    getPokemon()
   }
   return (
     <>
@@ -37,9 +50,16 @@ const DetailPage = () => {
             </h2>
           )}
           <div className="flex">
-            <button className="bg-yellow-300 text-white px-4 py-2 rounded mx-4 shadow-md">
+            {pokemon && pokemon.status !== '1' ? (
+            <button className="bg-yellow-300 text-white px-4 py-2 rounded mx-4 shadow-md" onClick={() => catchPokemon(pokemon.id)}>
+              Catch Pokemon
+            </button>
+            ) : (
+            <button className="bg-yellow-600 text-white px-4 py-2 rounded mx-4 shadow-md" onClick={() => releasePokemon(pokemon.id)}>
               Release Pokemno
             </button>
+            ) }
+            
             <button className="bg-red-500 text-white px-4 py-2 rounded mx-4 shadow-md" onClick={() => deletePokemon(pokemon.id)}>
               Delete Pokemon
             </button>

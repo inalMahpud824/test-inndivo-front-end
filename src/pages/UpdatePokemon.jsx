@@ -16,7 +16,7 @@ const UpdatePokemonPage = () => {
 
   const getPokemon = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/pokemon/${id}`);
+      const response = await axios.get(`http://localhost:3000/pokemons/${id}`);
       const res = await response.data;
       setPokemon(res);
     } catch (error) {
@@ -36,7 +36,7 @@ const UpdatePokemonPage = () => {
     const image = e.target.elements.image.value;
     console.log(name, height, width, length, skill, hp, damage, image)
     try {
-      await axios.patch(`http://localhost:5000/pokemon/${id}`, {
+      await axios.put(`http://localhost:3000/pokemons/${id}`, {
         name, skill, height, width, length, hp, damage, image
       })
       window.location.href=`/detail-pokemon/${pokemon.id}`
