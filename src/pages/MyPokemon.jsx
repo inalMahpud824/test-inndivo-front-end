@@ -31,9 +31,9 @@ const MyPokemonPage = () => {
     <Navbar />
     <SearchBox />
 
-    <div className="flex gap-4 justify-start">
+    <div className="flex gap-4 justify-center flex-wrap">
       {myPokemon && myPokemon.map((myPkmn) => (
-        <CardPokemon title={myPkmn.name} key={myPkmn.id} id={myPkmn.id}/>
+        <CardPokemon title={myPkmn.name} key={myPkmn.id} id={myPkmn.id} img={`http://localhost:3000/uploads/${myPkmn.image}`}/>
       ))
       }
     </div>

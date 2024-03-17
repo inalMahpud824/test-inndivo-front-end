@@ -70,11 +70,13 @@ const DetailPage = () => {
             </a>
           </div>
         </div>
-        <img
-          src="/public/images/pikachu.png"
-          alt="pokemon"
-          className="w-72 mx-auto mb-10"
-        />
+        {pokemon && (
+          <img
+            src={`http://localhost:3000/uploads/${pokemon.image}`}
+            alt="pokemon"
+            className="w-72 mx-auto mb-10"
+          />
+        )}
         <table className="min-w-full divide-gray-200">
           <thead className="border-b border-gray-200">
             <tr>

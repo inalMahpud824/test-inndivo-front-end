@@ -35,10 +35,10 @@ const ListPokemonPage = () => {
         </div>
       </a>
 
-      <div className="flex gap-4 justify-start">
+      <div className="flex gap-4 justify-center flex-wrap">
         {pokemon &&
           pokemon.map((pkmn) => (
-            <CardPokemon key={pkmn.id} title={pkmn.name} id={pkmn.id} />
+            <CardPokemon key={pkmn.id} title={pkmn.name} id={pkmn.id} img={`http://localhost:3000/uploads/${pkmn.image}`} />
           ))}
       </div>
     </>

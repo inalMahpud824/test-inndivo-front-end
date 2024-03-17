@@ -33,11 +33,11 @@ const UpdatePokemonPage = () => {
     const skill = e.target.elements.skill.value;
     const hp = e.target.elements.hp.value;
     const damage = e.target.elements.damage.value;
-    const image = e.target.elements.image.value;
-    console.log(name, height, width, length, skill, hp, damage, image)
+    // const image = e.target.elements.image.value;
+    console.log(name, height, width, length, skill, hp, damage)
     try {
       await axios.put(`http://localhost:3000/pokemons/${id}`, {
-        name, skill, height, width, length, hp, damage, image
+        name, skill, height, width, length, hp, damage
       })
       window.location.href=`/detail-pokemon/${pokemon.id}`
     }catch (error) {
@@ -61,7 +61,7 @@ const UpdatePokemonPage = () => {
               <LabelInput id="skill" label="Skill" type="text" defaultValue={pokemon.skill}/>
               <LabelInput id="hp" label="Hp" type="text" className="mx-4" defaultValue={pokemon.hp}/>
               <LabelInput id="damage" label="Damage" type="text" defaultValue={pokemon.damage}/>
-              <LabelInput id="image" label="Image" type="text" defaultValue={pokemon.image}/>
+              {/* <LabelInput id="image" label="Image" type="text" defaultValue={pokemon.image}/> */}
             </div>
             <div className="flex justify-center mt-4">
               <button className="px-8 py-2 bg-blue-500 rounded-md shadow-sm text-white font-medium">

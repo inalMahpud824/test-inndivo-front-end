@@ -1,10 +1,10 @@
 const CardPokemon = (props) => {
-  const {title = 'pikachu', id} = props
+  const {title = 'pikachu', id, img} = props
   return (
     <a href={`/detail-pokemon/${id}`}>
     <div className="w-40 p-4 m-2 px-2 bg-blue-500 rounded-md flex flex-wrap justify-center gap-3">
       <img
-        src="/images/pikachu.png"
+        src={img}
         alt=""
         className="w-[120px] h-[120px]  rounded-full bg-white"
       />
